@@ -1,7 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom"
 export default function MainPage () {
     return <>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
+
+        <nav style={{width: '100vw'}} className="navbar navbar-expand-lg navbar-dark bg-danger">
             <div className="containter-fluid">
                 <ul className="navbar-nav">
                     <li className="nav-item">

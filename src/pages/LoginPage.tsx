@@ -15,11 +15,16 @@ export default function LoginPage() {
         }
     return <>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Username: </label>
             <input type="text" id="username" ref={usernameRef}></input>
-            <label htmlFor="password">Password</label>
+            <br></br>
+            <br></br>
+            <label htmlFor="password">Password: </label>
             <input type="text" id="password" ref={passwordRef}></input>
+            <br></br>
+            <br></br>
             <button type="submit">Login</button>
+            <br></br>
         </form>
     </>
 }

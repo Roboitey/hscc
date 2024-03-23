@@ -9,6 +9,7 @@ import'bootstrap/dist/css/bootstrap.min.css'
 import MainPage from './pages/MainPage.tsx'
 import Fruit from './componets/Fruit.tsx'
 import Vegetables from './componets/Vegetables.tsx'
+import Pokemon from './componets/Pokemon.tsx'
 
 const router= createBrowserRouter([{
   path:"/",
@@ -36,7 +37,10 @@ const router= createBrowserRouter([{
       element:<Vegetables></Vegetables>
     }
   ]
-}]);
+},{
+    path: '/pokemon/',
+    element:<Pokemon></Pokemon>
+  }]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 

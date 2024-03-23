@@ -4,6 +4,7 @@ import App from'./App.tsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import HomePage from './pages/HomePage.tsx'
 import LoginPage from './pages/LoginPage.tsx'
+import RegistrationPage from './pages/RegistrationPage.tsx'
 import'bootstrap/dist/css/bootstrap.min.css'
 import MainPage from './pages/MainPage.tsx'
 import Fruit from './componets/Fruit.tsx'
@@ -15,8 +16,13 @@ const router= createBrowserRouter([{
   errorElement:<div>404 error</div>
   
 },{
+  path:"/register",
+  element:<RegistrationPage></RegistrationPage>
+  
+},{
   path:"/login",
   element:<LoginPage></LoginPage>
+
 
 },{
   path:"/main", 

@@ -21,13 +21,7 @@ export default function MainPage () {
                     </li>
                 </ul>
             </div>
-        </nav>
-    
-        <body>
-        <h1></h1>
-        </body>
-
-        
+        </nav>  
         <Outlet></Outlet>
     </>
 }

@@ -10,6 +10,7 @@ import MainPage from './pages/MainPage.tsx'
 import Fruit from './componets/Fruit.tsx'
 import Vegetables from './componets/Vegetables.tsx'
 import Pokemon from './componets/Pokemon.tsx'
+import PokemonID from './componets/PokemonID.tsx'
 
 const router= createBrowserRouter([{
   path:"/",
@@ -39,7 +40,12 @@ const router= createBrowserRouter([{
   ]
 },{
     path: '/pokemon/',
-    element:<Pokemon></Pokemon>
+    element:<Pokemon></Pokemon>,
+    children: [
+      {
+      path: ":id",
+      element: <PokemonID></PokemonID>,
+    }],
   }]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

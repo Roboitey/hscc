@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Pagination } from "react-bootstrap";
+import Pokemon from "../componets/Pokemon";
 interface pokemon { 
     name: string,
     url: string
@@ -30,4 +31,18 @@ export default function usePokemonApi(){
 
     }
     return { jsonData, pagination}
+}
+
+/* The function "getPokemon(id)" is getting the data from "pokeapi" and calling the data */
+export function getPokemon(id) {
+    const [pokemon, setPokemon] = useState();
+    useEffect(()=>{
+        async function fetchData() {
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+            const data = await res.json();
+            setPokemon(data);
+        }
+        fetchData();
+    },[id])
+    return pokemon;
 }

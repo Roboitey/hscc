@@ -1,4 +1,6 @@
+import { NavLink, Outlet } from "react-router-dom";
 import usePokemonApi from "../Hooks/usePokemonApi"
+
 
 export default function Pokemon() {
     const { jsonData, pagination} = usePokemonApi()
@@ -9,10 +11,15 @@ export default function Pokemon() {
             {jsonData?.results.map((pokemon)=>{
                 const number = pokemon.url.split("/")[6];
                 console.log(number)
-                return<li key={pokemon.name}>{"#" + number} {pokemon.name}</li>
+                return<li key={pokemon.name}>
+                    <NavLink to = {`/pokemon/${number}`}>
+                    {"#" + number} {pokemon.name}
+                    </NavLink>
+                    </li>
             })}
         </ul>
         <button onClick={()=>{pagination("previous")}}>Previous</button>
         <button onClick={()=>{pagination("next")}}>Next</button>
+        <Outlet></Outlet>
     </>
 }

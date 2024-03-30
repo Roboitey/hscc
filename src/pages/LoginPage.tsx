@@ -31,13 +31,14 @@ export default function LoginPage() {
             </div>
             <form onSubmit={handleSubmit}>
         <div className="row mb-3">
-            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
+            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email: </label>
             <div className="col-sm-10">
             <input type="email;" className="form-control" id="inputEmail3" ref={usernameRef}></input>
             </div>
         </div>
         <div className="row mb-3">
-            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
+            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password: </label>
+            <br></br>
             <div className="col-sm-10">
             <input type="password" className="form-control" id="inputPassword3" ref={passwordRef}></input>
             </div>
@@ -50,7 +51,7 @@ export default function LoginPage() {
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" id="gridCheck1"></input>
                 <label className="form-check-label" htmlFor="gridCheck1">
-                Example checkbox
+                Verification
                 </label>
 
             </div>

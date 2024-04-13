@@ -19,6 +19,12 @@ export default function MainPage () {
                     <li className="nav-item">
                         <NavLink className="nav-link" activeClassName="active" to="/main/vegetables">Vegetables</NavLink>
                     </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" activeClassName="active" to="/pokemon">Pokemon</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" activeClassName="active" to="/search">Pokemon Search</NavLink>
+                    </li>
                 </ul>
             </div>
         </nav>  

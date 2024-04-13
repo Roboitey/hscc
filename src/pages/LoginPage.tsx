@@ -1,63 +1,55 @@
-import {useRef} from "react"
+import { useContext, useRef } from "react";
+import './login.css';
+import UseAuth from "../Hooks/UseAuth";
+import UserContext from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
-       const usernameRef=useRef(null);        
-        const passwordRef=useRef(null)
-        const handleSubmit=(event: React.FormEvent)=>{
-            event.preventDefault();
-            const username=usernameRef.current?.value;
-            const password=passwordRef.current?.value;
-            if(username && password){
-            alert(`Username: ${username} Password: ${password}`);
-            } else{
-                alert(`Please insert value`);
-            } 
-        }
-    return <>
-            {/*<form>
-                    <label htmlFor="username">Username: </label>
-                    <input type="text" id="username" ></input>
-                    <br></br>
-                    <br></br>
-                    <label htmlFor="password">Password: </label>
-                    <input type="text" id="password" ></input>
-                    <br></br>
-                    <br></br>
-                    <button type="submit">Login</button>
-                    <br></br>
-            */}
-            <div className="container">
-                <center><h1>Login to Google</h1></center>
-            </div>
-            <form onSubmit={handleSubmit}>
-        <div className="row mb-3">
-            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email: </label>
-            <div className="col-sm-10">
-            <input type="email;" className="form-control" id="inputEmail3" ref={usernameRef}></input>
-            </div>
-        </div>
-        <div className="row mb-3">
-            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password: </label>
-            <br></br>
-            <div className="col-sm-10">
-            <input type="password" className="form-control" id="inputPassword3" ref={passwordRef}></input>
-            </div>
-        </div>
-        <fieldset className="row mb-3">
-            <legend className="col-form-label col-sm-2 pt-0">Radios</legend>
-        </fieldset>
-        <div className="row mb-3">
-            <div className="col-sm-10 offset-sm-2">
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" id="gridCheck1"></input>
-                <label className="form-check-label" htmlFor="gridCheck1">
-                Verification
-                </label>
+    const{user, setUser} = useContext(UserContext);
+    const navigate = useNavigate(); 
+    const usernameRef = useRef(null);
+    const passwordRef = useRef(null);
 
-            </div>
-            </div>
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        const username = usernameRef.current?.value;
+        const password = passwordRef.current?.value;
+        if (username && password) {
+            const [isAuthorized, user] = await  UseAuth(password, username);
+            if(isAuthorized){
+                setUser && setUser(user);
+                window.localStorage.setItem("user", JSON.stringify(user));
+                navigate("/home");
+            }
+           alert(`Username: ${username} Password: ${password}`);
+        } else {
+            alert(`Please insert value`);
+        }
+    };
+
+    return  <> {user && user.username}
+        <div className="registration-container">
+            <center><h1>Login to inBDPA</h1></center>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="inputUsername3">Username:</label>
+                    <input type="text" className="form-control" id="inputUsername3" ref={usernameRef} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="inputPassword3">Password:</label>
+                    <input type="password" className="form-control" id="inputPassword3" ref={passwordRef} />
+                </div>
+                    <legend className="col-form-label">Click To Verify</legend>
+                <div className="form-group">
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" id="gridCheck1" />
+                        <label className="form-check-label" htmlFor="gridCheck1">
+                            Verification
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" className="btn btn-primary">Sign in</button>
+            </form>
         </div>
-        <button type="submit" className="btn btn-primary">Sign in</button>
-        </form>
-    </>
+     </>
 }

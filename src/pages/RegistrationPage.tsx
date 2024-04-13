@@ -25,7 +25,7 @@ const RegistrationPage: React.FC = () => {
 
   return (
     <div className="registration-container">
-      <h2>Register to Google!</h2>
+      <h2>Register to inBDPA!</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Username:</label>
@@ -48,7 +48,7 @@ const RegistrationPage: React.FC = () => {
           />
         </div>
         <div className="form-group">
-          <label>Password:</label>
+        <label>Password:</label>
           <input
             type="password"
             name="password"

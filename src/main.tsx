@@ -12,6 +12,9 @@ import Vegetables from './componets/Vegetables.tsx'
 import Pokemon from './componets/Pokemon.tsx'
 import PokemonID from './componets/PokemonID.tsx'
 import SearchPage from './pages/SearchPage.tsx'
+import UserContextProvider from './context/UserContextProvider.tsx'
+import React from 'react'
+import Home from './componets/Home.tsx'
 
 const router= createBrowserRouter([{
   path:"/",
@@ -37,10 +40,7 @@ const router= createBrowserRouter([{
     },{
       path:"vegetables",
       element:<Vegetables></Vegetables>
-    },{
-      path: "/pokemon/",
-      element: <Pokemon></Pokemon>
-    }
+    },
   ]
 },{
     path: '/pokemon/',
@@ -53,13 +53,17 @@ const router= createBrowserRouter([{
   },{
       path: "/search",
       element: <SearchPage></SearchPage>,
+  },{
+    path: '/home',
+    element: <Home></Home>,
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-
-  <RouterProvider router={router}>
-  
-  </RouterProvider>
-
+<React.StrictMode>
+  <UserContextProvider>
+    <RouterProvider router={router}></RouterProvider>
+  </UserContextProvider>
+</React.StrictMode>
 )
